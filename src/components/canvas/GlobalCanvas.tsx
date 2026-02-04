@@ -1,4 +1,5 @@
-import { Suspense, ReactNode } from 'react';
+import { Suspense } from 'react';
+import type { ReactNode } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Preload } from '@react-three/drei';
 import PostProcessing from './PostProcessing';

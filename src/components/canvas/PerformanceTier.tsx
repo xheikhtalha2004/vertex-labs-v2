@@ -1,4 +1,5 @@
-import { ReactNode, useState, createContext, useContext } from 'react';
+import { useState, createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
 import { PerformanceMonitor } from '@react-three/drei';
 
 type PerformanceTierLevel = 'high' | 'mid' | 'low';

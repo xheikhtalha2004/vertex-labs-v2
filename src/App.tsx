@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 // Force Update
-import Lenis from 'lenis';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import gsap from 'gsap';
@@ -9,7 +8,7 @@ import {
   Box, Target, DollarSign, Zap,
   Wind, Activity, Thermometer, Box as BoxIcon,
   Cpu, CheckCircle, FlaskConical, Layers,
-  Mail, Phone, MapPin, ArrowRight, ChevronRight
+  Mail, Phone, MapPin, ArrowRight
 } from 'lucide-react';
 import './App.css';
 
@@ -23,11 +22,8 @@ import {
   useLenis, // Add useLenis import
   CrystalMesh,
   ParticleField,
-  SmallCrystal,
   GridBackground,
 } from './components/canvas';
-
-import ChatWidget from './components/chat/ChatWidget'; // Chat integration
 
 // ... existing code ...
 
@@ -83,14 +79,7 @@ const caseStudies = [
   }
 ];
 
-const services = [
-  { icon: Wind, label: 'Computational Fluid Dynamics' },
-  { icon: Activity, label: 'Finite Element Analysis' },
-  { icon: Thermometer, label: 'Thermal Simulation' },
-  { icon: BoxIcon, label: 'High-Fidelity CAD' },
-  { icon: Cpu, label: 'Rapid Prototyping' },
-  { icon: CheckCircle, label: 'Design Validation' }
-];
+
 
 const techStack = [
   { name: 'ANSYS', category: 'Simulation' },

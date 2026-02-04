@@ -43,14 +43,14 @@ export default function PostProcessing({
             />
 
             {/* Subtle chromatic aberration for "tech" feel */}
-            {tier === 'high' && (
+            {tier === 'high' ? (
                 <ChromaticAberration
                     offset={new Vector2(0.0005, 0.0005)}
                     blendFunction={BlendFunction.NORMAL}
                     radialModulation={false}
                     modulationOffset={0.5}
                 />
-            )}
+            ) : null}
 
             {/* Film grain for organic texture */}
             <Noise

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';

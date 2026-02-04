@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useChat } from 'ai/react';
+import { useChat, type Message } from 'ai/react';
 import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -59,7 +59,7 @@ export default function ChatWidget() {
                                     </div>
                                 )}
 
-                                {messages.map((m) => (
+                                {messages.map((m: Message) => (
                                     <div
                                         key={m.id}
                                         className={`flex items-start gap-3 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}
@@ -82,7 +82,7 @@ export default function ChatWidget() {
                                             }
                     `}>
                                             {/* Simple formatting for bullet points if any */}
-                                            {m.content.split('\n').map((line, i) => (
+                                            {m.content.split('\n').map((line: string, i: number) => (
                                                 <p key={i} className="mb-1 last:mb-0">
                                                     {line}
                                                 </p>

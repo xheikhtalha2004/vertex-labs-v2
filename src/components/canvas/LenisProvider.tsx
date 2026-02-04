@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import Lenis from 'lenis';
 import { addEffect } from '@react-three/fiber';
 

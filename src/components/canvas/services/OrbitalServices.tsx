@@ -108,7 +108,7 @@ function ServiceNode({ index, total, radius = 3, title, iconId, isHovered, onHov
     );
 }
 
-function DashedOrbitRing({ radius, dashed = true, opacity = 0.2 }: { radius: number, dashed?: boolean, opacity?: number }) {
+function DashedOrbitRing({ radius, opacity = 0.2 }: { radius: number, dashed?: boolean, opacity?: number }) {
     return (
         <group rotation={[Math.PI / 2, 0, 0]}>
             <mesh>
@@ -122,10 +122,9 @@ function DashedOrbitRing({ radius, dashed = true, opacity = 0.2 }: { radius: num
 function DashedLine({ start, end, opacity }: { start: number[], end: number[], opacity: number }) {
     const points = useMemo(() => [new THREE.Vector3(...start), new THREE.Vector3(...end)], [start, end]);
     const lineGeometry = useMemo(() => new THREE.BufferGeometry().setFromPoints(points), [points]);
+    const lineMaterial = useMemo(() => new THREE.LineBasicMaterial({ color: "#4F6DF5", transparent: true, opacity }), [opacity]);
 
     return (
-        <line geometry={lineGeometry}>
-            <lineBasicMaterial color="#4F6DF5" transparent opacity={opacity} />
-        </line>
+        <primitive object={new THREE.Line(lineGeometry, lineMaterial)} />
     )
 }
