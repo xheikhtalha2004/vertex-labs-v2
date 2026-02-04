@@ -1,0 +1,119 @@
+/* App-specific styles */
+
+/* Ensure smooth canvas rendering */
+canvas {
+  display: block;
+}
+
+/* Hero canvas positioning */
+.hero-canvas {
+  position: relative;
+}
+
+.hero-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Services canvas */
+.services-core {
+  position: relative;
+}
+
+.services-core canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Smooth section transitions */
+section {
+  will-change: opacity, transform;
+}
+
+/* Card hover effects */
+.case-card:hover {
+  border-color: rgba(79, 109, 245, 0.3);
+}
+
+/* Tech card 3D effect */
+.tech-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Filter chip animation */
+.filter-chip {
+  transition: all 0.2s ease;
+}
+
+/* Form input focus states */
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(79, 109, 245, 0.15);
+}
+
+/* Button press effect */
+.btn-primary:active,
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Stat card hover */
+.stat-card:hover {
+  border-color: rgba(79, 109, 245, 0.25);
+}
+
+/* Service node hover enhancement */
+.service-node-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(79, 109, 245, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-headline {
+    font-size: 48px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 36px !important;
+  }
+  
+  .hero-canvas {
+    max-width: 280px !important;
+    margin: 0 auto 2rem auto !important;
+  }
+  
+  .services-core {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  
+  .stat-card-item {
+    padding: 0.75rem;
+  }
+  
+  .stat-card-item span.text-2xl {
+    font-size: 1.25rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  canvas {
+    animation: none !important;
+  }
+}
