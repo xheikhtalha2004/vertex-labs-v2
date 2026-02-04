@@ -1,13 +1,18 @@
-import { useState, useRef, useEffect } from 'react';
-import { useChat, type Message } from 'ai/react';
+import { useState, useRef, useEffect, FormEvent } from 'react';
 import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface Message {
+    id: string;
+    role: 'user' | 'assistant';
+    content: string;
+}
+
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
-    const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-        api: '/api/chat', // Call our Serverless Function
-    });
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [input, setInput] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     // Auto-scroll to bottom
@@ -16,6 +21,46 @@ export default function ChatWidget() {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages]);
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        if (!input.trim() || isLoading) return;
+
+        const userMessage: Message = {
+            id: Date.now().toString(),
+            role: 'user',
+            content: input.trim(),
+        };
+
+        setMessages((prev) => [...prev, userMessage]);
+        setInput('');
+        setIsLoading(true);
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: [...messages, userMessage] }),
+            });
+
+            const data = await response.json();
+            const assistantMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: data.message || data.content || 'Sorry, I could not process your request.',
+            };
+            setMessages((prev) => [...prev, assistantMessage]);
+        } catch {
+            const errorMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: 'Sorry, there was an error processing your request.',
+            };
+            setMessages((prev) => [...prev, errorMessage]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <>
@@ -59,7 +104,7 @@ export default function ChatWidget() {
                                     </div>
                                 )}
 
-                                {messages.map((m: Message) => (
+                                {messages.map((m) => (
                                     <div
                                         key={m.id}
                                         className={`flex items-start gap-3 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}
@@ -107,7 +152,7 @@ export default function ChatWidget() {
                                 <form onSubmit={handleSubmit} className="relative">
                                     <input
                                         value={input}
-                                        onChange={handleInputChange}
+                                        onChange={(e) => setInput(e.target.value)}
                                         placeholder="Ask about CFD, FEA, or Prototypes..."
                                         className="w-full bg-white/5 border border-white/10 rounded-xl pl-4 pr-12 py-3 text-sm text-white placeholder:text-[#A6AFBF]/50 focus:outline-none focus:border-[#4F6DF5]/50 focus:ring-1 focus:ring-[#4F6DF5]/50 transition-all font-sans"
                                     />

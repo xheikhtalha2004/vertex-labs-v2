@@ -6,8 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Box, Target, DollarSign, Zap,
-  Wind, Activity, Thermometer, Box as BoxIcon,
-  Cpu, CheckCircle, FlaskConical, Layers,
+  FlaskConical, Layers,
   Mail, Phone, MapPin, ArrowRight
 } from 'lucide-react';
 import './App.css';

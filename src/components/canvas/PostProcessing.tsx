@@ -32,33 +32,48 @@ export default function PostProcessing({
         return null;
     }
 
-    return (
-        <EffectComposer multisampling={tier === 'high' ? 8 : 0}>
-            {/* Bloom for emissive glow (hero crystal, LEDs) */}
-            <Bloom
-                intensity={tier === 'high' ? 0.4 : 0.2}
-                luminanceThreshold={0.8}
-                luminanceSmoothing={0.9}
-                mipmapBlur
-            />
-
-            {/* Subtle chromatic aberration for "tech" feel */}
-            {tier === 'high' ? (
+    // High tier with chromatic aberration
+    if (tier === 'high') {
+        return (
+            <EffectComposer multisampling={8}>
+                <Bloom
+                    intensity={0.4}
+                    luminanceThreshold={0.8}
+                    luminanceSmoothing={0.9}
+                    mipmapBlur
+                />
                 <ChromaticAberration
                     offset={new Vector2(0.0005, 0.0005)}
                     blendFunction={BlendFunction.NORMAL}
                     radialModulation={false}
                     modulationOffset={0.5}
                 />
-            ) : null}
+                <Noise
+                    opacity={0.03}
+                    blendFunction={BlendFunction.OVERLAY}
+                />
+                <Vignette
+                    offset={0.3}
+                    darkness={0.5}
+                    blendFunction={BlendFunction.NORMAL}
+                />
+            </EffectComposer>
+        );
+    }
 
-            {/* Film grain for organic texture */}
+    // Mid tier without chromatic aberration
+    return (
+        <EffectComposer multisampling={0}>
+            <Bloom
+                intensity={0.2}
+                luminanceThreshold={0.8}
+                luminanceSmoothing={0.9}
+                mipmapBlur
+            />
             <Noise
                 opacity={0.03}
                 blendFunction={BlendFunction.OVERLAY}
             />
-
-            {/* Vignette for cinematic framing */}
             <Vignette
                 offset={0.3}
                 darkness={0.5}
