@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Box, Target, DollarSign, Zap,
   FlaskConical, Layers,
-  Mail, Phone, MapPin, ArrowRight
+  Mail, Phone, MapPin
 } from 'lucide-react';
 import './App.css';
 
@@ -143,7 +143,6 @@ const Navbar = () => {
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const [wordCount, setWordCount] = useState(0);
   const mainRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
