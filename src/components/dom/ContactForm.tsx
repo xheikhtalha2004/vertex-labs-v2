@@ -37,7 +37,7 @@ export default function ContactForm() {
 
     return (
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label className="block text-sm text-[#A6AFBF] mb-2">First Name *</label>
                     <input

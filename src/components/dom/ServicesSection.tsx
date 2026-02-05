@@ -3,6 +3,23 @@ import gsap from 'gsap';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { SmallCrystal, OrbitalServices } from '../canvas';
+import {
+    Thermometer,
+    Box,
+    Activity,
+    Cpu,
+    Wind,
+    CheckCircle
+} from 'lucide-react';
+
+const ICONS: Record<string, any> = {
+    'thermal': Thermometer,
+    'cad': Box,
+    'fea': Activity,
+    'proto': Cpu,
+    'cfd': Wind,
+    'valid': CheckCircle
+};
 
 // Data from user request image
 const SERVICES = [
@@ -42,7 +59,7 @@ export default function ServicesSection() {
 
             <div className="relative z-10 w-full h-full flex flex-col items-center">
                 {/* Title Section */}
-                <div className="text-center mb-10 max-w-3xl mx-auto px-4 sm:px-6">
+                <div className="text-center mb-10 max-w-3xl mx-auto px-4 sm:px-8">
                     <div className="services-title-anim inline-block mb-6">
                         <span className="font-mono text-xs font-bold text-[#4F6DF5] uppercase tracking-widest bg-[#4F6DF5]/10 px-4 py-2 rounded-full border border-[#4F6DF5]/20">
                             Capabilities
@@ -59,19 +76,22 @@ export default function ServicesSection() {
                 {/* Mobile Services Grid (visible on small screens) */}
                 <div className="md:hidden w-full px-4 mb-8">
                     <div className="grid grid-cols-2 gap-4">
-                        {SERVICES.map((service) => (
-                            <div
-                                key={service.id}
-                                className="glass-card p-4 text-center hover:border-[#4F6DF5]/40 transition-all duration-300"
-                            >
-                                <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#4F6DF5]/20 flex items-center justify-center">
-                                    <div className="w-4 h-4 rounded-full bg-[#4F6DF5]" />
+                        {SERVICES.map((service) => {
+                            const Icon = ICONS[service.id] || Box;
+                            return (
+                                <div
+                                    key={service.id}
+                                    className="glass-card p-4 text-center hover:border-[#4F6DF5]/40 transition-all duration-300"
+                                >
+                                    <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#4F6DF5]/20 flex items-center justify-center text-[#4F6DF5]">
+                                        <Icon size={20} />
+                                    </div>
+                                    <h4 className="text-sm font-semibold text-white leading-tight">
+                                        {service.title}
+                                    </h4>
                                 </div>
-                                <h4 className="text-sm font-semibold text-white leading-tight">
-                                    {service.title}
-                                </h4>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 

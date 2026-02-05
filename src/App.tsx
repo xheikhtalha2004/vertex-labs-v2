@@ -29,14 +29,6 @@ import {
 
 // ... existing code ...
 
-{/* Section 2: Services (Refactored) */ }
-<ServicesSection />
-
-{/* Section 2.5: Process (New) */ }
-<ProcessSection />
-
-{/* Section 3: Trusted By */ }
-
 // Hooks
 import { useReducedMotion } from './hooks/useReducedMotion';
 
@@ -127,6 +119,7 @@ const Navbar = () => {
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-8">
         <a href="#services" onClick={(e) => handleScroll(e, '#services')} className="text-sm font-medium text-[#A6AFBF] hover:text-white transition-colors font-display tracking-wide">Services</a>
+        <a href="#process" onClick={(e) => handleScroll(e, '#process')} className="text-sm font-medium text-[#A6AFBF] hover:text-white transition-colors font-display tracking-wide">Process</a>
         <a href="#archive" onClick={(e) => handleScroll(e, '#archive')} className="text-sm font-medium text-[#A6AFBF] hover:text-white transition-colors font-display tracking-wide">Archive</a>
         <a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="text-sm font-medium text-[#A6AFBF] hover:text-white transition-colors font-display tracking-wide">Contact</a>
       </div>
@@ -153,15 +146,16 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-[#07080B]/95 backdrop-blur-xl border-b border-[#A6AFBF]/10 md:hidden">
-          <div className="flex flex-col p-6 gap-4">
-            <a href="#services" onClick={(e) => handleScroll(e, '#services')} className="text-lg font-medium text-[#A6AFBF] hover:text-white transition-colors font-display">Services</a>
-            <a href="#archive" onClick={(e) => handleScroll(e, '#archive')} className="text-lg font-medium text-[#A6AFBF] hover:text-white transition-colors font-display">Archive</a>
-            <a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="text-lg font-medium text-[#A6AFBF] hover:text-white transition-colors font-display">Contact</a>
+        <div className="absolute top-full left-0 right-0 bg-[#07080B]/98 backdrop-blur-2xl border-b border-[#A6AFBF]/10 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="flex flex-col p-8 gap-6">
+            <a href="#services" onClick={(e) => handleScroll(e, '#services')} className="text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/5 pb-4">Services</a>
+            <a href="#process" onClick={(e) => handleScroll(e, '#process')} className="text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/5 pb-4">Process</a>
+            <a href="#archive" onClick={(e) => handleScroll(e, '#archive')} className="text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/5 pb-4">Archive</a>
+            <a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/5 pb-4">Contact</a>
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="btn-primary text-center py-3 mt-2"
+              className="btn-primary text-center py-4 mt-2 text-lg"
             >
               Start Project
             </a>
@@ -384,9 +378,9 @@ function App() {
     <LenisProvider>
       <div ref={mainRef} className="relative bg-[#07080B] min-h-screen">
         {/* Global overlays */}
-        <div className="fixed inset-0 vignette-overlay z-50 pointer-events-none" />
-        <div className="fixed inset-0 scanline-overlay z-50 pointer-events-none" />
-        <div className="fixed inset-0 noise-overlay z-50 pointer-events-none" />
+        <div className="fixed inset-0 vignette-overlay z-[900] pointer-events-none" />
+        <div className="fixed inset-0 scanline-overlay z-[900] pointer-events-none" />
+        <div className="fixed inset-0 noise-overlay z-[900] pointer-events-none" />
 
         {/* Global Background Canvas with Grid */}
         <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
@@ -478,6 +472,9 @@ function App() {
 
         {/* Section 2: Services (using new Orbital component) */}
         <ServicesSection />
+
+        {/* Section 2.5: Process (New) */}
+        <ProcessSection />
 
         {/* Section 3: Trusted By */}
         <section className="section-flowing z-30 reveal-section">
@@ -703,7 +700,7 @@ function App() {
 
         {/* Section 8: Contact */}
         <section id="contact" className="section-flowing z-[80] reveal-section">
-          <div className="max-w-6xl mx-auto px-8 py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-8 py-20">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Left: Info */}
               <div className="reveal-item">
@@ -739,7 +736,7 @@ function App() {
 
         {/* Section 9: Footer */}
         <footer className="section-flowing z-[90] border-t border-[#A6AFBF]/10">
-          <div className="max-w-6xl mx-auto px-8 py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-8 py-16">
             <div className="flex flex-col items-center text-center mb-10">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 border-2 border-[#4F6DF5] rounded flex items-center justify-center">
