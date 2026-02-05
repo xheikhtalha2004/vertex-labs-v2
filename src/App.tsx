@@ -4,11 +4,10 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  Box, Target, DollarSign, Zap,
+Box, Target, DollarSign, Zap,
   FlaskConical, Layers,
-  Mail, Phone, MapPin
-} from 'lucide-react';
+  Mail, Phone, MapPin,
+  Wind, Cpu, Code, Hexagon, Database, Component, Workflow, Activity
 import './App.css';
 
 // DOM components
@@ -83,14 +82,14 @@ const caseStudies = [
 
 
 const techStack = [
-  { name: 'ANSYS', category: 'Simulation' },
-  { name: 'SOLIDWORKS', category: 'CAD' },
-  { name: 'MATLAB', category: 'Computing' },
-  { name: 'COMSOL', category: 'Multiphysics' },
-  { name: 'CATIA', category: 'Design' },
-  { name: 'FUSION', category: 'CAD' },
-  { name: 'PYTHON', category: 'Scripting' },
-  { name: 'OPENFOAM', category: 'CFD' }
+  { name: 'ANSYS', category: 'Simulation', icon: Activity },
+  { name: 'SOLIDWORKS', category: 'CAD', icon: Box },
+  { name: 'MATLAB', category: 'Computing', icon: Cpu },
+  { name: 'COMSOL', category: 'Multiphysics', icon: Component },
+  { name: 'CATIA', category: 'Design', icon: Hexagon },
+  { name: 'FUSION', category: 'CAD', icon: Layers },
+  { name: 'PYTHON', category: 'Scripting', icon: Code },
+  { name: 'OPENFOAM', category: 'CFD', icon: Wind }
 ];
 
 // ============================================
@@ -689,7 +688,7 @@ function App() {
                   key={i}
                   className="stack-card tech-card flex flex-col items-center justify-center py-8"
                 >
-                  <Layers className="w-8 h-8 text-[#4F6DF5] mb-3" />
+                  <tech.icon className="w-8 h-8 text-[#4F6DF5] mb-3" />
                   <div className="text-center">
                     <div className="font-semibold text-lg">{tech.name}</div>
                     <div className="text-xs text-[#A6AFBF] font-mono uppercase tracking-wider mt-1">{tech.category}</div>

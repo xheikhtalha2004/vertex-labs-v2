@@ -58,7 +58,7 @@ export default function ServicesSection() {
 
                 {/* Mobile Services Grid (visible on small screens) */}
                 <div className="md:hidden w-full px-4 mb-8">
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-4">
                         {SERVICES.map((service) => (
                             <div
                                 key={service.id}
