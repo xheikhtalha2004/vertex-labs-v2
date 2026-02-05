@@ -207,13 +207,6 @@ function App() {
           duration: 0.6,
           ease: 'power2.out'
         }, '-=0.4')
-        .from('.hero-cta', {
-          y: 18,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'power2.out'
-        }, '-=0.4')
         .from('.stat-card-item', {
           y: 40,
           opacity: 0,
@@ -260,43 +253,7 @@ function App() {
         ease: 'none'
       });
 
-      // Services section
-      gsap.from('.services-title', {
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: 1,
-        },
-        x: -100,
-        opacity: 0,
-        ease: 'power2.out'
-      });
-
-      gsap.from('.services-core', {
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: 'top 80%',
-          end: 'top 30%',
-          scrub: 1,
-        },
-        scale: 0.6,
-        opacity: 0,
-        ease: 'power2.out'
-      });
-
-      gsap.from('.service-node-item', {
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: 'top 70%',
-          end: 'top 20%',
-          scrub: 1,
-        },
-        opacity: 0,
-        scale: 0.9,
-        stagger: 0.1,
-        ease: 'power2.out'
-      });
+      // Services section animations moved to ServicesSection component
 
       // Archive section - Simple fade in to avoid "stuck invisible" issues
       gsap.fromTo('.archive-header',
