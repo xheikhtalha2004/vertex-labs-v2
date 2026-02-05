@@ -8,7 +8,8 @@ import {
   Box, Target, DollarSign, Zap,
   FlaskConical, Layers,
   Mail, Phone, MapPin,
-  Wind, Cpu, Code, Hexagon, Component, Activity
+  Wind, Cpu, Code, Hexagon, Component, Activity,
+  Menu, X
 } from 'lucide-react';
 import './App.css';
 
@@ -135,13 +136,11 @@ const Navbar = () => {
 
       {/* Mobile Hamburger */}
       <button
-        className="md:hidden flex flex-col gap-1.5 p-2"
+        className="md:hidden p-2 text-white"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle menu"
       >
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
       {/* Mobile Menu */}
@@ -362,7 +361,15 @@ function App() {
 
     }, mainRef);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger after a small delay to ensure all elements are rendered
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
   }, [prefersReducedMotion]);
 
   // Refresh GSAP on filter change to ensure layout recalculations
@@ -412,13 +419,11 @@ function App() {
                   Solution Lab • Operational Since 2019
                 </p>
 
-                <h1 className="hero-headline text-[40px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-[1.1] mb-6">
-                  Engineering<br />
-                  <span className="text-gradient">Solvency</span><br />
-                  at Scale.
+                <h1 className="hero-headline text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-[1.1] mb-6">
+                  Engineering <span className="text-gradient">Solvency</span> at Scale.
                 </h1>
 
-                <p className="hero-sub text-[#A6AFBF] text-base lg:text-lg leading-relaxed max-w-md mb-8">
+                <p className="hero-sub text-[#A6AFBF] text-sm sm:text-base lg:text-lg leading-relaxed max-w-md mb-8">
                   We don't "make things pretty." We <span className="text-white font-medium">engineer outcomes</span>.
                   High-fidelity CAD, computational validation, and rapid prototyping for B2B manufacturers who need to ship.
                 </p>
