@@ -15,16 +15,6 @@ canvas {
   height: 100% !important;
 }
 
-/* Services canvas */
-.services-core {
-  position: relative;
-}
-
-.services-core canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
 /* Smooth section transitions */
 section {
   will-change: opacity, transform;
@@ -86,13 +76,8 @@ textarea:focus {
   }
 
   .hero-canvas {
-    max-width: 280px !important;
-    margin: 0 auto 2rem auto !important;
-  }
-
-  .services-core {
-    width: 140px !important;
-    height: 140px !important;
+    max-width: 320px !important;
+    margin: 0 auto 1.5rem auto !important;
   }
 
   .stat-card-item {

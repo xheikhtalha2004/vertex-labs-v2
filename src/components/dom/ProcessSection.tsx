@@ -47,8 +47,8 @@ export default function ProcessSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-24 z-20">
-            <div className="max-w-7xl mx-auto px-8">
+        <section ref={sectionRef} id="process" className="relative py-24 z-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-8">
                     <div className="max-w-2xl">
                         <div className="inline-block mb-6">
@@ -62,7 +62,7 @@ export default function ProcessSection() {
                     </div>
                     <a
                         href="#contact"
-                        className="btn-primary px-10 py-4"
+                        className="btn-primary w-full sm:w-auto px-10 py-4 text-center"
                     >
                         Schedule Consultation
                     </a>
