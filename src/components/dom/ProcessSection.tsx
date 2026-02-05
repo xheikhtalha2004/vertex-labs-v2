@@ -60,12 +60,18 @@ export default function ProcessSection() {
                             How We <span className="text-gradient">Engineer</span>
                         </h2>
                     </div>
-                    <a
-                        href="#contact"
-                        className="btn-primary w-full sm:w-auto px-10 py-4 text-center"
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const contactElement = document.getElementById('contact');
+                            if (contactElement) {
+                                contactElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                        className="btn-primary w-full sm:w-auto px-10 py-4 text-center cursor-pointer"
                     >
                         Schedule Consultation
-                    </a>
+                    </button>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6">

@@ -145,27 +145,27 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-[#07080B] border-b border-[#A6AFBF]/10 md:hidden animate-in fade-in slide-in-from-top-4 duration-300 z-[1000]">
-          <div className="flex flex-col p-8 gap-8">
-            <a href="#services" onClick={(e) => handleScroll(e, '#services')} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
+        <div className="absolute top-full left-0 right-0 bg-[#07080B] border-b border-[#A6AFBF]/10 md:hidden animate-in fade-in slide-in-from-top-4 duration-300 z-[1001] pointer-events-auto">
+          <div className="flex flex-col p-8 gap-8 pointer-events-auto">
+            <a href="#services" onClick={(e) => { handleScroll(e, '#services'); setMobileMenuOpen(false); }} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
               <Layers size={24} className="text-[#4F6DF5]" />
               Services
             </a>
-            <a href="#process" onClick={(e) => handleScroll(e, '#process')} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
+            <a href="#process" onClick={(e) => { handleScroll(e, '#process'); setMobileMenuOpen(false); }} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
               <Activity size={24} className="text-[#4F6DF5]" />
               Process
             </a>
-            <a href="#archive" onClick={(e) => handleScroll(e, '#archive')} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
+            <a href="#archive" onClick={(e) => { handleScroll(e, '#archive'); setMobileMenuOpen(false); }} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
               <Box size={24} className="text-[#4F6DF5]" />
               Archive
             </a>
-            <a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
+            <a href="#contact" onClick={(e) => { handleScroll(e, '#contact'); setMobileMenuOpen(false); }} className="flex items-center gap-6 text-xl font-medium text-[#A6AFBF] hover:text-[#4F6DF5] transition-colors font-display border-b border-[#A6AFBF]/10 pb-6">
               <Mail size={24} className="text-[#4F6DF5]" />
               Contact
             </a>
             <a
               href="#contact"
-              onClick={(e) => handleScroll(e, '#contact')}
+              onClick={(e) => { handleScroll(e, '#contact'); setMobileMenuOpen(false); }}
               className="btn-primary flex items-center justify-center gap-3 py-4 mt-4 text-lg"
             >
               <Zap size={20} />
