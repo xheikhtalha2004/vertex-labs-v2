@@ -8,7 +8,7 @@ import {
   Box, Target, DollarSign, Zap,
   FlaskConical, Layers,
   Mail, Phone, MapPin,
-  Wind, Cpu, Code, Hexagon, Database, Component, Workflow, Activity
+  Wind, Cpu, Code, Hexagon, Component, Activity
 } from 'lucide-react';
 import './App.css';
 
